@@ -18,3 +18,13 @@ df = df.drop(['Date Time'], axis = 1)
 temp = df['T (deg C)']
 
 #Creating a function to change the dataset into X and Y, X being arrays within x numbers, and Y being the next predicted value
+def df_to_X_Y(df, windowsize):
+    df_as_np = df.to_numpy()
+    X = []
+    Y = []
+    for i in range(len(df) - winsize):
+        x = df[i:i+winsize]
+        y = df[[i+winsize]]
+        X.append(x)
+        Y.append(y)
+    return np.array(X), np.array(Y)
